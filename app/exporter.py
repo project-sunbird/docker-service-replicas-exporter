@@ -19,9 +19,9 @@ class DockerServiceReplicasCollector(object):
   def collect(self):
     service_replicas_lines = subprocess.check_output(['docker', 'service', 'ls', '--format', '"{{.Name}} {{.Replicas}}"']).strip().split('\n')
     cleaned_service_replicas_lines = [service_replicas_line for service_replicas_line in service_replicas_lines if service_replicas_line is not None and service_replicas_line != '']
-    service_replicas_running_gauge = GaugeMetricFamily('docker_service_replicas_running', 'Number of replicas running for a service', labels=['instance'])
-    service_replicas_expected_gauge = GaugeMetricFamily('docker_service_replicas_expected', 'Number of replicas expected for a service', labels=['instance'])
-    service_replicas_success_gauge = GaugeMetricFamily('docker_service_replicas_success', 'Checks if number replicas running is same as expected for a service', labels=['instance'])
+    service_replicas_running_gauge = GaugeMetricFamily('docker_service_replicas_running', 'Number of replicas running for a service', labels=['service_name'])
+    service_replicas_expected_gauge = GaugeMetricFamily('docker_service_replicas_expected', 'Number of replicas expected for a service', labels=['service_name'])
+    service_replicas_success_gauge = GaugeMetricFamily('docker_service_replicas_success', 'Checks if number replicas running is same as expected for a service', labels=['service_name'])
     logging.debug("service_replicas_lines: {}".format(service_replicas_lines))
     for service_replicas_line in cleaned_service_replicas_lines:
       logging.debug("service_replicas_line: {}".format(service_replicas_line))

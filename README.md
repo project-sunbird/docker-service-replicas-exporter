@@ -10,16 +10,16 @@ Metrics will available in http://localhost:9258
 $ curl -s localhost:9258
 # HELP docker_service_replicas_running Number of replicas running for a service
 # TYPE docker_service_replicas_running gauge
-docker_service_replicas_running{instance="service1"} 2.0
-docker_service_replicas_running{instance="service2"} 1.0
+docker_service_replicas_running{service_name="service1"} 2.0
+docker_service_replicas_running{service_name="service2"} 1.0
 # HELP docker_service_replicas_expected Number of replicas expected for a service
 # TYPE docker_service_replicas_expected gauge
-docker_service_replicas_expected{instance="service1"} 1.0
-docker_service_replicas_expected{instance="service2"} 1.0
+docker_service_replicas_expected{service_name="service1"} 1.0
+docker_service_replicas_expected{service_name="service2"} 1.0
 # HELP docker_service_replicas_success Checks if of number replicas running is same as number of replicas expected for a service
 # TYPE docker_service_replicas_success gauge
-docker_service_replicas_success{instance="service1"} 0.0
-docker_service_replicas_success{instance="service2"} 1.0
+docker_service_replicas_success{service_name="service1"} 0.0
+docker_service_replicas_success{service_name="service2"} 1.0
 ```
 
 ### Config
