@@ -1,0 +1,2 @@
+exporter_port: 9258 # Port on which Prometheus can call this exporter to get metrics
+log_level: info
