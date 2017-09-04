@@ -37,10 +37,10 @@ RUN set -ex; \
 	dockerd -v; \
 	docker -v
 
-COPY app /opt/prometheus-docker-service-replicas-exporter
+COPY app /opt/docker-service-replicas-exporter
 
-RUN pip install -r /opt/prometheus-docker-service-replicas-exporter/requirements.txt
+RUN pip install -r /opt/docker-service-replicas-exporter/requirements.txt
 
 EXPOSE 9258
 
-ENTRYPOINT ["python", "/opt/prometheus-docker-service-replicas-exporter/exporter.py"]
+ENTRYPOINT ["python", "/opt/docker-service-replicas-exporter/exporter.py"]

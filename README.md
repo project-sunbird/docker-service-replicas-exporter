@@ -1,6 +1,6 @@
-# prometheus-docker-service-replicas-exporter
+# docker-service-replicas-exporter
 
-Metrics for docker service replication counts
+Prometheus metrics exporter for docker service replication counts
 
 ### Metrics
 
@@ -46,5 +46,5 @@ python app/exporter.py example/config.yml
 > This must be run on a docker swarm master node
 
 ```
-docker run -p 9258:9258 -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd)/example/config.yml:/etc/prometheus-docker-service-replicas-exporter/config.yml sunbird/prometheus-docker-service-replicas-exporter /etc/prometheus-docker-service-replicas-exporter/config.yml
+docker run -p 9258:9258 -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd)/example/config.yml:/etc/docker-service-replicas-exporter/config.yml sunbird/docker-service-replicas-exporter /etc/docker-service-replicas-exporter/config.yml
 ```
