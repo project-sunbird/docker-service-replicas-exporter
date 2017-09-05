@@ -16,10 +16,18 @@ docker_service_replicas_running{service_name="service2"} 1.0
 # TYPE docker_service_replicas_expected gauge
 docker_service_replicas_expected{service_name="service1"} 1.0
 docker_service_replicas_expected{service_name="service2"} 1.0
-# HELP docker_service_replicas_success Checks if of number replicas running is same as number of replicas expected for a service
-# TYPE docker_service_replicas_success gauge
-docker_service_replicas_success{service_name="service1"} 0.0
-docker_service_replicas_success{service_name="service2"} 1.0
+```
+
+### Alert Example
+
+```
+ALERT service_replication_failure
+  IF ((docker_service_replicas_running / docker_service_replicas_expected) * 100) < 100
+  FOR 5m
+  ANNOTATIONS {
+      summary = "Service replication failed",
+      description = "Service replication is {{$value}}% for {{ $labels.service_name }}",
+  }
 ```
 
 ### Config
@@ -28,8 +36,6 @@ docker_service_replicas_success{service_name="service2"} 1.0
 exporter_port: 9258 # Port on which Prometheus can call this exporter to get metrics
 log_level: info
 ```
-
-See the example below for exposed metrics
 
 ### Run
 
